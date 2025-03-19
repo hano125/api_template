@@ -67,7 +67,6 @@ class AuthController extends Controller
         }
     }
 
-
     public function refreshToken(Request $request)
     {
         // Delete the current token
@@ -81,5 +80,13 @@ class AuthController extends Controller
             'access_token' => $token,
             'token_type' => 'Bearer',
         ]);
+    }
+
+
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+
+        return ApiResponseHelper::success(null, 'تم تسجيل الخروج بنجاح');
     }
 }
