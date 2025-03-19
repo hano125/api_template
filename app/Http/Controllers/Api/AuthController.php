@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\PersonalAccessToken;
 use Illuminate\Validation\ValidationException;
+use Spatie\Activitylog\Contracts\Activity;
 
 class AuthController extends Controller
 {
@@ -29,6 +30,18 @@ class AuthController extends Controller
 
         $token = $user->createToken('auth_token')->plainTextToken;
 
+
+
+        activity('register user') // Log name
+            ->causedBy($user)
+            ->performedOn($user)
+            ->withProperties([
+                'new data' => $user->toArray(),
+                'old data' => null,
+                "token" => $token,
+                'user_id' => $user->id,
+            ])
+            ->log($user->name . 'قام هذا المستخدم بإنشاء حساب جديد');
         return ApiResponseHelper::success(['token' => $token], 'تم تسجيل الحساب بنجاح');
     }
 
@@ -46,7 +59,11 @@ class AuthController extends Controller
         }
 
         $token = $user->createToken($user->name . 'auth_token')->plainTextToken;
-
+        // Store the token in the database
+        activity()->log('login', [
+            'user_id' => $user->id,
+            'token' => $token,
+        ]);
         return ApiResponseHelper::success(['token' => $token], 'تم تسجيل الدخول بنجاح');
     }
 
@@ -54,7 +71,7 @@ class AuthController extends Controller
     {
         try {
             // Use Laravel's built-in auth to authenticate the user
-            $user = auth()->user();
+            $user = auth::user();
 
             if (!$user) {
                 return ApiResponseHelper::error('Invalid or expired token', 401);
