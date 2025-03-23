@@ -28,6 +28,10 @@ class AuthController extends Controller
         ]);
 
         $token = $user->createToken('auth_token')->plainTextToken;
+        activity()
+            ->performedOn($user)
+            ->causedBy($user)
+            ->log('تم تسجيل حساب جديد');
 
         return ApiResponseHelper::success(['token' => $token], 'تم تسجيل الحساب بنجاح');
     }
