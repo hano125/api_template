@@ -5,11 +5,8 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-<<<<<<< HEAD
-=======
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
->>>>>>> 1038aff0db1e28c525fa1cd181f3ede1f825ace9
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Activitylog\LogOptions;
