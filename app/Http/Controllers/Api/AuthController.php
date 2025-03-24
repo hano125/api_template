@@ -42,7 +42,6 @@ class AuthController extends Controller
             ->withProperties([
                 'new data' => $user->toArray(),
                 'old data' => null,
-                "token" => $token,
                 'user_id' => $user->id,
             ])
             ->log($user->name . 'قام هذا المستخدم بإنشاء حساب جديد');
