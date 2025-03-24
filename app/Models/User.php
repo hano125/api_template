@@ -15,6 +15,9 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens, HasRoles;
     use LogsActivity;
+    protected $guard_name = 'api';
+
+
 
     protected static $logAttributes = ['name', 'email'];
     protected static $logOnlyDirty = true;
