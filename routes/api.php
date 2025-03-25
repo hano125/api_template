@@ -7,7 +7,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\API\Role\RoleController;
 use App\Http\Controllers\API\Users\UsersController;
 use App\Http\Controllers\API\Permissions\PermissionController;
-
+use App\Http\Controllers\Api\storeAllController;
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
@@ -53,3 +53,5 @@ Route::controller(AuthController::class)->prefix('auth')->group(function () {
     Route::post('/verify-token', 'verifyToken')->middleware('auth:sanctum');
     Route::post('/refresh', 'refreshToken')->middleware('auth:sanctum');
 });
+
+Route::post('insertData', [storeAllController::class, 'store']);

@@ -54,4 +54,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public function est_mains()
+    {
+        return $this->hasMany(est_main::class, 'user_id');
+    }
 }
