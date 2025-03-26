@@ -54,4 +54,4 @@ Route::controller(AuthController::class)->prefix('auth')->group(function () {
     Route::post('/refresh', 'refreshToken')->middleware('auth:sanctum');
 });
 
-Route::post('insertData', [storeAllController::class, 'store']);
+Route::post('insertData', [storeAllController::class, 'store'])->middleware('auth:sanctum');

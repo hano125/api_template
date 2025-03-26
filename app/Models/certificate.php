@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class certificate extends Model
 {
-    protected $table = 'certificate';
+    protected $table = 'certificates';
     protected $fillable = ["certificate_name", 'certificate_flag'];
     public $timestamps = true;
 }

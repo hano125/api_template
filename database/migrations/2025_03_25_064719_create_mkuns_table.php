@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('mkuns', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('mkun_name');
             $table->string('mkun_flag', 10)->nullable();
             $table->timestamps();
         });

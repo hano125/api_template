@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('deg_addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('deg_id')->constrained('deg_types')->onDelete('cascade');
+            $table->string('deg_address_name');
+            // $table->foreignId('deg_id')->constrained('deg_types')->onDelete('cascade');
+            $table->unsignedBigInteger('deg_id')->nullable();
+            // $table->foreign('deg_id')->references('id')->on('deg_types')->onDelete('cascade');
             $table->enum('flag', ['0', '1'])->nullable(); // adjust enum values as needed
             $table->timestamps();
         });

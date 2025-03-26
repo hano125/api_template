@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class mkun extends Model
 {
     protected $table = 'mkuns';
-    protected $fillable = ['mkun', 'mkun_flag'];
+    protected $fillable = ['mkun_name', 'mkun_flag'];
 }
