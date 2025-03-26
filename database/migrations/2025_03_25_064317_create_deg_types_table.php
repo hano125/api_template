@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('deg_types', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
             $table->string('deg_type_name');
+=======
+            $table->string('name');
+>>>>>>> 830ca675d9a4c7834fee912b5c67136075deb7a3
             $table->string('degree_flag')->nullable();
             $table->timestamps();
         });

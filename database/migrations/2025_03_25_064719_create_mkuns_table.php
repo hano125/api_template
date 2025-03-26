@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('mkuns', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
             $table->string('mkun_name');
+=======
+            $table->string('name');
+>>>>>>> 830ca675d9a4c7834fee912b5c67136075deb7a3
             $table->string('mkun_flag', 10)->nullable();
             $table->timestamps();
         });
